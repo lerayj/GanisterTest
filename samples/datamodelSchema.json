@@ -1,0 +1,285 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "nodetypeDefinitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "package": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "pattern": "^[a-z]+",
+            "uniqueItems": true
+          },
+          "category": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "category_event": {
+            "type": "object",
+            "properties": {
+              "listItems": {
+                "type": "string"
+              },
+              "searchFirst": {
+                "type": "string"
+              },
+              "customPage": {
+                "type": "string"
+              },
+              "customList": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "listItems",
+              "searchFirst",
+              "customPage",
+              "customList"
+            ]
+          },
+          "properties": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "type"
+              ]
+            }
+          },
+          "ui": {
+            "type": "object",
+            "properties": {
+              "gridColumns": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "type"
+                  ]
+                }
+              },
+              "tabs":{
+                "type":"array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "activeOnStartup": {
+                      "type": "string"
+                    },
+                    "tabContentType": {
+                      "type": "string"
+                    },
+                    "lockLinked": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "required": [
+              "gridColumns",
+              "defaultThumbnail",
+              "tabs"
+            ]
+          }
+        },
+        "required": [
+          "package",
+          "name",
+          "category",
+          "properties",
+          "ui"
+        ]
+      }
+    },
+    "methods": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "package": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "serverOrClient": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "package",
+          "name",
+          "serverOrClient",
+          "code"
+        ]
+      }
+    },
+    "relTypes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "type"
+        ]
+      }
+    },
+    "packages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "dependencies": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "id",
+          "dependencies"
+        ]
+      }
+    },
+    "leftPanelCategories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "catid": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "catid",
+          "name",
+          "label",
+          "icon"
+        ]
+      }
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value",
+          "name"
+        ]
+      }
+    },
+    "listOfValues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value",
+                "label"
+              ]
+            }
+          }
+        },
+        "required": [
+          "name",
+          "items"
+        ]
+      }
+    }
+  },
+  "required": [
+    "nodetypeDefinitions",
+    "methods",
+    "relTypes",
+    "packages",
+    "leftPanelCategories",
+    "languages",
+    "listOfValues"
+  ]
+}
